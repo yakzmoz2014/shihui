@@ -5,5 +5,8 @@ Rails.application.routes.draw do
     resources :meetups
   end
 
-  root "welcome#index"
+  resources :meetups
+
+  root "meetups#index"
+
 end
