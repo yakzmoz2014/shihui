@@ -1,0 +1,21 @@
+<h2>新增聚会</h2>
+
+<%= simple_form_for [:admin, @meetup] do |f| %>
+  <div class="group">
+    <%= f.input :title, label: "标题" %>
+  </div>
+
+  <div class="group">
+    <%= f.input :description, label: "描述" %>
+  </div>
+
+  <div class="group">
+    <%= f.input :quantity, label: "门票数量"%>
+  </div>
+
+  <div class="group">
+    <%= f.input :price, label: "价格" %>
+  </div>
+
+  <%= f.submit "提交", data: {disable_with: "Submitting..."} %>
+<% end %>
