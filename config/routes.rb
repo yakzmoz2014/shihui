@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     resources :meetups
   end
 
-  resources :meetups
+  resources :meetups do
+    member do
+      post :add_to_cart
+    end
+  end
 
   root "meetups#index"
 
