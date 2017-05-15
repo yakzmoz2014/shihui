@@ -5,9 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-u = User.new
-u.email = "admin@test.com"
-u.password = "111111"
-u.password_confirmation = "111111"
-u.is_admin = true
-u.save
+if User.find_by(email: "admin@test.com").nil?
+  u = User.new
+  u.email = "admin@test.com"
+  u.password = "111111"
+  u.password_confirmation = "111111"
+  u.is_admin = true
+  u.save
+  puts " 管理员账户已创建， 账号：#{u.email.com}, 密码：#{u.password}"
+else
+  puts " 管理员账户已存在！"
+end
