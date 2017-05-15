@@ -17,5 +17,14 @@
     <%= f.input :price, label: "价格" %>
   </div>
 
+  <% if @meetup.image.present? %>
+    <span>当前图片</span><br />
+    <%= image_tag(@meetup.image.thumb.url) %>
+  <% end %>
+
+  <div class="group">
+    <%= f.input :image, as: :file %>
+  </div>
+
   <%= f.submit "提交", data: {disable_with: "Submitting..."} %>
 <% end %>

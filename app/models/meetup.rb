@@ -9,6 +9,7 @@
 #  price       :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  image       :string
 #
 
 class Meetup < ApplicationRecord
@@ -16,4 +17,5 @@ class Meetup < ApplicationRecord
   validates :description, presence: true
   validates :quantity, presence: true
   validates :price, presence: true
+  mount_uploader :image, ImageUploader
 end
