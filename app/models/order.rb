@@ -12,6 +12,8 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  token            :string
+#  is_paid          :boolean          default("f")
+#  payment_method   :string
 #
 
 class Order < ApplicationRecord
@@ -21,7 +23,7 @@ class Order < ApplicationRecord
     self.token = SecureRandom.uuid
   end
 
-  
+
   belongs_to :user
   has_many :meetup_lists
 
@@ -29,4 +31,12 @@ class Order < ApplicationRecord
   validates :billing_address, presence: true
   validates :shipping_name, presence: true
   validates :shipping_address, presence: true
+
+  def set_payment_with!(method)
+    self.update_columns(payment_method: method)
+  end
+
+  def pay!
+    self.update_columns(is_paid: true)
+  end
 end

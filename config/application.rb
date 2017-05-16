@@ -11,6 +11,6 @@ module FoodSocial
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    Rails.application.config.time_zone = "Beijing"
+    Rails.application.config.time_zone = "Beijing" #将系统时间改为北京时间
   end
 end
