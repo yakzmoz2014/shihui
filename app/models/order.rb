@@ -60,7 +60,7 @@ class Order < ApplicationRecord
     end
 
     event :ship do
-      transitions from :paid,           to: :shipped
+      transitions from: :paid,           to: :shipped
     end
 
     event :deliver do
