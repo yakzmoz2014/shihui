@@ -13,16 +13,16 @@
       </thead>
       <tbody>
 
-        <% @product_lists.each do |product_list| %>
+        <% @meetup_lists.each do |meetup_list| %>
           <tr>
             <td>
-              <%= product_list.product_name %>
+              <%= meetup_list.meetup_name %>
             </td>
             <td>
-              <%= product_list.product_price %>
+              <%= meetup_list.meetup_price %>
             </td>
             <td>
-              <%= product_list.quantity %>
+              <%= meetup_list.quantity %>
             </td>
           </tr>
         <% end %>
@@ -32,7 +32,7 @@
 
     <div class="total clearfix">
       <span class="pull-right">
-       总计 <%= @order.total %> CNY
+       小计：￥ <%= @order.total %>
        </span>
      </div>
 
