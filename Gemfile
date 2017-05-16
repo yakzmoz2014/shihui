@@ -41,7 +41,8 @@ gem 'font-awesome-rails'
 gem 'annotate'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'letter_opener', group: :development  # 预览邮件  
+gem 'letter_opener', group: :development  # 预览邮件
+gem 'aasm'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
