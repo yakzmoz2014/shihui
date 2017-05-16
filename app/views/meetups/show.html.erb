@@ -16,7 +16,11 @@
     <div> 数量 : <%= @meetup.quantity %> </div>
     <div class="product-price"> ￥ <%= @meetup.price %> </div>
     <div class="pull-right">
-      <%= link_to("加入购物车", add_to_cart_meetup_path(@meetup), method: :post, :class => "btn btn-danger btn-lg") %>
+      <% if @meetup.quantity.present? && @meetup.quantity > 0 %>
+        <%= link_to("加入购物车", add_to_cart_meetup_path(@meetup), method: :post, :class => "btn btn-danger btn-lg") %>
+      <% else %>
+        <%= link_to("无货", "#", class: "btn btn-danger btn-lg") %>
+      <% end %>
     </div>
   </div>
 </div>
