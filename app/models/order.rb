@@ -22,7 +22,7 @@
 #
 
 class Order < ApplicationRecord
-  include AASM
+
   before_create :generate_token
 
   def generate_token
@@ -47,6 +47,8 @@ class Order < ApplicationRecord
   end
 
 # 订单状态机制
+  include AASM
+
   aasm do
     state :order_placed, initial: true
     state :paid
@@ -60,11 +62,11 @@ class Order < ApplicationRecord
     end
 
     event :ship do
-      transitions from: :paid,           to: :shipped
+      transitions from: :paid,           to: :shipping
     end
 
     event :deliver do
-      transitions from: :shipping,       to: :good_returned
+      transitions from: :shipping,       to: :shipped
     end
 
     event :return_good do
