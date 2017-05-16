@@ -6,4 +6,9 @@ class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.order("id DESC")
   end
+
+  def show
+    @order = Order.find(params[:id])
+    @meetup_lists = @order.meetup_lists
+  end
 end
