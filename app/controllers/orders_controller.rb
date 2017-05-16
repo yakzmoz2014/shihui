@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.find_by_token(params[:id])
     @meetup_lists = @order.meetup_lists
   end
 
@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
         meetup_list.quantity = cart_item.quantity
         meetup_list.save
       end
-      redirect_to order_path(@order)
+      redirect_to order_path(@order.token)
     else
       render "carts/checkout"
     end

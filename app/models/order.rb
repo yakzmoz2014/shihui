@@ -11,12 +11,20 @@
 #  shipping_address :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  token            :string
 #
 
 class Order < ApplicationRecord
+  before_create :generate_token
+
+  def generate_token
+    self.token = SecureRandom.uuid
+  end
+
+  
   belongs_to :user
   has_many :meetup_lists
-  
+
   validates :billing_name, presence: true
   validates :billing_address, presence: true
   validates :shipping_name, presence: true
