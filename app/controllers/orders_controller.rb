@@ -20,6 +20,8 @@ class OrdersController < ApplicationController
         meetup_list.quantity = cart_item.quantity
         meetup_list.save
       end
+      current_cart.clean! # 订单结算完成后购物城自动清空
+      OrderMailer.notify_order_placed(@order).deliver!
       redirect_to order_path(@order.token)
     else
       render "carts/checkout"
