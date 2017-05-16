@@ -12,7 +12,7 @@ if User.find_by(email: "admin@test.com").nil?
   u.password_confirmation = "111111"
   u.is_admin = true
   u.save
-  puts " 管理员账户已创建， 账号：#{u.email.com}, 密码：#{u.password}"
+  puts " 管理员账户已创建， 账号：#{u.email}, 密码：#{u.password}"
 else
   puts " 管理员账户已存在！"
 end
