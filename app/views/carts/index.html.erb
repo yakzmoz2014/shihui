@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-md-12">
 
+    <%= link_to("清空购物车", clea_carts_path,
+                method: :delete, class: "pull-right",
+                style: "text-decoration: underline;",
+                data: {confirm: "确定清空购物车？"}) %>
+
     <h2>购物车</h2>
 
     <table class="table table-bordered">
@@ -35,7 +40,9 @@
 
     <div class="total clearfix">
       <span class="pull-right">
-        <span>小计： ￥XXX</span>
+        <span>
+          小计： ￥<%= render_cart_total_price(current_cart)%>
+        </span>
       </span>
     </div>
 
