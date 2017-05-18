@@ -10,6 +10,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  image       :string
+#  category_id :integer
 #
 
 class Meetup < ApplicationRecord
@@ -18,4 +19,5 @@ class Meetup < ApplicationRecord
   validates :quantity, presence: true
   validates :price, presence: true
   mount_uploader :image, ImageUploader
+  belongs_to :category
 end

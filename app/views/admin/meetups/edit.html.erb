@@ -17,6 +17,10 @@
     <%= f.input :price, label: "价格" %>
   </div>
 
+  <div class="group">
+      <%= f.select :category_id, @categories %>
+  </div>
+
   <% if @meetup.image.present? %>
     <span>当前图片</span><br />
     <%= image_tag(@meetup.image.thumb.url) %>
