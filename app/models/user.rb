@@ -32,7 +32,8 @@ class User < ApplicationRecord
 
 
   has_many :orders
-
+  # 防止用户名和邮箱冲突
+  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   def admin?
     is_admin
@@ -49,5 +50,28 @@ class User < ApplicationRecord
     end
   end
 
+# 用户名登录设置
+def login=(login)
+  @login = login
+end
+
+def login
+  @login || self.username || self.email
+end
+
+#重写self.find_for_database_authentication
+
+def self.find_first_by_auth_conditions(warden_conditions)
+  conditions = warden_conditions.dup
+  if login = conditions.delete(:login)
+    where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+  else
+    if conditions[:username].nil?
+      where(conditions).first
+    else
+      where(username: conditions[:username]).first
+    end
+  end
+end
 
 end
