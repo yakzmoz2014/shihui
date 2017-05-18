@@ -16,6 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  is_admin               :boolean          default("f")
+#  username               :string
 #
 # Indexes
 #
@@ -32,9 +33,20 @@ class User < ApplicationRecord
 
   has_many :orders
 
-  
+
   def admin?
     is_admin
+  end
+
+  #当 username 存在的时候，显示 username，当 username 不存在的时候，用 email 的前缀作为用户名显示。
+
+
+  def display_username
+    if self.username.present?
+      self.username
+    else
+      self.email.split("@").first
+    end
   end
 
 
